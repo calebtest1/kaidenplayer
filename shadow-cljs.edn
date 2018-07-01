@@ -1,0 +1,18 @@
+{:lein   true
+
+ :builds {:dev  {:target          :browser
+                 :output-dir      "resources/public/js/compiled/out"
+                 :asset-path      "/js/compiled/out"
+                 :closure-defines {goog.DEBUG true}
+                 :modules         {:app {:entries [kaidenplayer.core]}}
+                 :devtools        {:http-root  "resources/public"
+                                   :http-port  3000
+                                   :after-load kaidenplayer.core/mount-root}}
+
+          :release  {:target          :browser
+                     :output-dir      "resources/public/js/compiled/out"
+                     :asset-path      "/js/compiled/out"
+                     :modules         {:app {:entries [kaidenplayer.core]}}}
+
+          :test {:target   :karma
+                 :output-to "resources/public/js/compiled/test.js"}}}
